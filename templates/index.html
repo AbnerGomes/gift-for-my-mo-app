@@ -5,6 +5,15 @@
     <title>Cartas de Amor 💌</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+     <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:title" content="Cartas de Amor 💌">
+    <meta property="og:description" content="Presentinho pro meu mo feito com amor ❤️. Clique para ler.">
+    <meta property="og:image" content="{{ url_for('static', filename='favicon.ico', _external=True) }}">
+    <meta property="og:url" content="{{ request.url_root }}">
+    <meta property="og:type" content="website">
 </head>
 <body>
     <canvas id="floresCanvas"></canvas>
