@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartas de Amor 💌</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <canvas id="floresCanvas"></canvas>
+    <div class="container">
+        <h1>💌 Uma Carta Para Você</h1>
+        <div id="carta" class="carta">
+            Clique no botão para ver uma mensagem 💖
+        </div>
+        <button onclick="novaCarta()">Nova Carta</button>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <h2>📸 Nossas Memórias</h2>
+        <div id="galeria">
+            <img id="foto" src="{{ url_for('static', filename='fotos/foto1.jpeg') }}" alt="Minha foto favorita com voce 💍">
+            <p id="legenda">Minha foto favorita com voce 💍</p>
+            <button onclick="proximaFoto()">Próxima Foto</button>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <h2>⏳ Namorados há...</h2>
+        <div id="contador" class="contador">Calculando...</div>
+    </div>
+
+    <script>
+        const dataInicio = new Date("2021-03-09T00:00:00"); // <-- Edite para a data de vocês!
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <audio id="musica" src="{{ url_for('static', filename='audio/my-only-one.mp3') }}" autoplay loop></audio>
+    <button onclick="toggleMusica()" class="botao-musica">⏯️ Música</button>
+
+</body>
+</html>
