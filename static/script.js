@@ -54,20 +54,63 @@ function proximaFoto() {
 }
 
 // Contador de tempo juntos
+// function atualizarContador() {
+//     const agora = new Date();
+//     const diff = agora - dataInicio;
+
+//     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+//     const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+//     const minutos = Math.floor((diff / (1000 * 60)) % 60);
+//     const segundos = Math.floor((diff / 1000) % 60);
+
+//     document.getElementById("contador").textContent =
+//         `${dias} dias, ${horas}h, ${minutos}min, ${segundos}s`;
+// }
+
+// setInterval(atualizarContador, 1000);
+
+
+const dataInicio = new Date("2021-03-09T00:00:00"); 
+
 function atualizarContador() {
     const agora = new Date();
-    const diff = agora - dataInicio;
 
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diff / (1000 * 60)) % 60);
-    const segundos = Math.floor((diff / 1000) % 60);
+    let anos = agora.getFullYear() - dataInicio.getFullYear();
+    let meses = agora.getMonth() - dataInicio.getMonth();
+    let dias = agora.getDate() - dataInicio.getDate();
+    let horas = agora.getHours() - dataInicio.getHours();
+    let minutos = agora.getMinutes() - dataInicio.getMinutes();
+    let segundos = agora.getSeconds() - dataInicio.getSeconds();
+
+    // Correções para valores negativos
+    if (segundos < 0) {
+        segundos += 60;
+        minutos--;
+    }
+    if (minutos < 0) {
+        minutos += 60;
+        horas--;
+    }
+    if (horas < 0) {
+        horas += 24;
+        dias--;
+    }
+    if (dias < 0) {
+        const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+        dias += ultimoDiaMesAnterior;
+        meses--;
+    }
+    if (meses < 0) {
+        meses += 12;
+        anos--;
+    }
 
     document.getElementById("contador").textContent =
-        `${dias} dias, ${horas}h, ${minutos}min, ${segundos}s`;
+        `${anos} ano${anos !== 1 ? 's' : ''}, ${meses} mes${meses !== 1 ? 'es' : ''}, ${dias} dia${dias !== 1 ? 's' : ''}, ${horas}horas, ${minutos}minutos, ${segundos}segundos`;
 }
 
 setInterval(atualizarContador, 1000);
+atualizarContador(); // inicializa ao carregar
 
 
 function toggleMusica() {
